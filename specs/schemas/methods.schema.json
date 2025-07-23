@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "methods.schema.json",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["params", "returns"],
+    "properties": {
+      "kind": {
+        "$ref": "shared.schema.json#/definitions/kind"
+      },
+      "reference": {
+        "$ref": "shared.schema.json#/definitions/reference"
+      },
+      "base": {
+        "$ref": "shared.schema.json#/definitions/base"
+      },
+      "pattern": {
+        "$ref": "shared.schema.json#/definitions/pattern"
+      },
+      "context": {
+        "type": "string"
+      },
+      "target": {
+        "$ref": "shared.schema.json#/definitions/target"
+      },
+      "params": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "type"],
+          "properties": {
+            "name": { "type": "string" },
+            "type": { "type": "string" },
+            "reference": {
+              "$ref": "shared.schema.json#/definitions/reference"
+            }
+          }
+        }
+      },
+      "returns": { "type": "string" }
+    }
+  }
+}

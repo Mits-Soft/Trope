@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "securityProps.schema.json",
+  "type": "object",
+  "properties": {
+    "inputValidation": { "type": "boolean" },
+    "permissionLevel": {
+      "$ref": "shared.schema.json#/definitions/securityLevel"
+    },
+    "encryption": { "type": "boolean" },
+    "auditTrail": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

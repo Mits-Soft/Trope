@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "trope.schema.json",
+    "title": "Trope Metamodel Schema",
+    "type": "object",
+    "required": [
+        "name",
+        "type"
+    ],
+    "properties": {
+        "name": {
+            "$ref": "base.schema.json#/properties/name"
+        },
+        "type": {
+            "$ref": "base.schema.json#/properties/type"
+        },
+        "version": {
+            "$ref": "base.schema.json#/properties/version"
+        },
+        "kind": {
+            "$ref": "shared.schema.json#/definitions/kind"
+        },
+        "base": {
+            "$ref": "shared.schema.json#/definitions/base"
+        },
+        "reference": {
+            "$ref": "shared.schema.json#/definitions/reference"
+        },
+        "pattern": {
+            "$ref": "shared.schema.json#/definitions/pattern"
+        },
+        "target": {
+            "$ref": "shared.schema.json#/definitions/target"
+        },
+        "securityLevel": {
+            "$ref": "shared.schema.json#/definitions/securityLevel"
+        },
+        "methods": {
+            "$ref": "methods.schema.json"
+        },
+        "idProps": {
+            "$ref": "idProps.schema.json"
+        },
+        "physicProps": {
+            "$ref": "physicProps.schema.json"
+        },
+        "logicProps": {
+            "$ref": "logicProps.schema.json"
+        },
+        "securityProps": {
+            "$ref": "securityProps.schema.json"
+        },
+        "dataModel": {
+            "$ref": "dataModel.schema.json"
+        }
+    },
+    "additionalProperties": false
+}

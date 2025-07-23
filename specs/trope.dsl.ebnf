@@ -1,0 +1,96 @@
+Document        = { Entity } ;
+
+Entity          = Identifier , "{" ,
+                    [ DocComment ] ,
+                    [ AliasBlock ] ,
+                    [ ImportBlock ] ,
+                    [ ExtendsBlock ] ,
+                    [ MixinsBlock ] ,
+                    [ IdPropsBlock ] ,
+                    [ PhysicPropsBlock ] ,
+                    [ LogicPropsBlock ] ,
+                    [ SecurityPropsBlock ] ,
+                    [ ClassesBlock ] ,
+                    [ DataModelBlock ] ,
+                    [ MethodsBlock ] ,
+                  "}" ;
+
+DocComment      = "doc" , ":" , String , ";" ;
+AliasBlock      = "alias" , ":" , String , ";" ;                         (* Alias en otros lenguajes *)
+ImportBlock     = "imports" , ":" , "[" , Identifier , { "," , Identifier } , "]" , ";" ;
+ExtendsBlock    = "extends" , ":" , "[" , Identifier , { "," , Identifier } , "]" , ";" ;
+MixinsBlock     = "mixins" , ":" , "[" , Identifier , { "," , Identifier } , "]" , ";" ;
+
+IdPropsBlock       = "IdProps"       , "{" , { Property } , "}" ;
+PhysicPropsBlock   = "PhysicProps"   , "{" , { Property } , "}" ;
+LogicPropsBlock    = "LogicProps"    , "{" , { Property } , "}" ;
+SecurityPropsBlock = "SecurityProps" , "{" , { Property } , "}" ;
+
+ClassesBlock       = "Classes" , "{" , { ClassDef } , "}" ;
+ClassDef           = Identifier , ":" , "string" , "=" , String , ";" ;
+
+DataModelBlock     = "DataModel" , "{" , { DataModelDef } , "}" ;
+DataModelDef       = Identifier , ":" , "{" , { Property } , "}" ;
+
+MethodsBlock       = "Methods" , "{" , { MethodDef } , "}" ;
+MethodDef          = Identifier , "(" , [ ParamList ] , ")" ,
+                      ":" , Type ,
+                      [ "(" , Metadata , ")" ] ,
+                      [ Comment ] , ";" ;
+
+ParamList          = Parameter , { "," , Parameter } ;
+Parameter          = Identifier , ":" , Type ;
+
+Property           = Identifier , ":" , Type ,
+                      [ "(" , Metadata , ")" ] ,
+                      [ "=" , Value ] , ";" ,
+                      [ Comment ] ;
+
+Type               = BaseType | ContainerType | AliasType | ReferenceType ;
+
+BaseType           = "int" | "float" | "string" | "bool" | "vector" | "matrix" ;
+
+ContainerType      = "list" , "<" , Type , ">" | "set" , "<" , Type , ">" ;
+
+AliasType          = "Array" , "<" , Type , ">"        (* TypeScript *)
+                   | "List" , "<" , Type , ">"         (* Java *)
+                   | "Optional" , "<" , Type , ">"     (* Python *) ;
+
+ReferenceType      = Identifier ;
+
+Metadata           = MetadataItem , { "," , MetadataItem } ;
+
+MetadataItem       = "pattern" , ":" , String
+                   | "designPattern" , ":" , DesignPatterns
+                   | "relatedConcept" , ":" , String
+                   | "securityLevel" , ":" , String ;
+
+DesignPatterns     = "Singleton" | "FactoryMethod" | "AbstractFactory"
+                   | "Builder" | "Prototype" | "Adapter" | "Bridge"
+                   | "Composite" | "Decorator" | "Facade" | "Flyweight"
+                   | "Proxy" | "ChainOfResponsibility" | "Command"
+                   | "Interpreter" | "Iterator" | "Mediator" | "Memento"
+                   | "Observer" | "State" | "Strategy"
+                   | "TemplateMethod" | "Visitor" ;
+
+Value              = Number | String | BooleanLiteral | Vector | Matrix ;
+
+Vector             = "[" , Value , { "," , Value } , "]" ;
+Matrix             = "[" , Vector , { "," , Vector } , "]" ;
+
+BooleanLiteral     = "true" | "false" ;
+String             = '"' , { CharacterExceptQuote } , '"' ;
+Number             = Digit , { Digit } , [ "." , Digit , { Digit } ] ;
+
+Comment            = "/*" , { CharacterExceptNewline } , "*/" ;
+
+Digit              = "0" | "1" | "2" | "3" | "4"
+                   | "5" | "6" | "7" | "8" | "9" ;
+
+Letter             = 
+  "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+| "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+
+Identifier             = Letter , { Letter | Digit | "_" } ;
+CharacterExceptQuote   = ? any character except '"' ? ;
+CharacterExceptNewline = ? any character except newline ? ;

@@ -1,0 +1,51 @@
+{
+  "name": "trope-dsl",
+  "displayName": "Trope DSL Syntax",
+  "description": "Syntax for Trope EntityDescriptor files (.dscr)",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mits-Soft/Trope.git"
+  },
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "trope",
+        "aliases": [
+          "Trope DSL"
+        ],
+        "extensions": [
+          ".dscr"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "trope",
+        "scopeName": "source.trope",
+        "path": "./syntaxes/trope.tmLanguage.json"
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": [
+          "*.metamodel.trope.json"
+        ],
+        "url": "./schemas/trope.schema.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "trope",
+        "path": "./snippets/trope.snippets.json"
+      }
+    ]
+  }
+}

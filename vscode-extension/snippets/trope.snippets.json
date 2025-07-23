@@ -1,0 +1,61 @@
+{
+  "EntityDescriptor": {
+    "prefix": "entity",
+    "body": [
+      "EntityDescriptor ${1:MyEntity} {",
+      "  kind: ${2:entity}",
+      "  base: ${3:null}",
+      "  reference: ${4:null}",
+      "  pattern: ${5:null}",
+      "  context: ${6:general}",
+      "}"
+    ],
+    "description": "Bloque de definición de entidad Trope"
+  },
+
+  "Method": {
+    "prefix": "method",
+    "body": [
+      "method ${1:add} {",
+      "  kind: method",
+      "  params: [",
+      "    { name: \"${2:a}\", type: \"${3:float}\" },",
+      "    { name: \"${4:b}\", type: \"${5:float}\" }",
+      "  ],",
+      "  returns: \"${6:float}\",",
+      "  target: \"${7:python}\",",
+      "  context: \"${8:arithmetic}\"",
+      "}"
+    ],
+    "description": "Definición de método con semántica"
+  },
+
+  "DataModel": {
+    "prefix": "datamodel",
+    "body": [
+      "dataModel ${1:OperationRequest} {",
+      "  kind: dataModel,",
+      "  fields: [",
+      "    { name: \"${2:op}\", type: \"${3:string}\" },",
+      "    { name: \"${4:left}\", type: \"${5:float}\" },",
+      "    { name: \"${6:right}\", type: \"${7:float}\" }",
+      "  ],",
+      "  base: ${8:null},",
+      "  reference: ${9:null}",
+      "}"
+    ],
+    "description": "Bloque estructural para modelo de datos"
+  },
+
+  "idProps block": {
+    "prefix": "idprops",
+    "body": [
+      "idProps: {",
+      "  author: \"${1:Marcos}\",",
+      "  category: \"${2:utility}\",",
+      "  tags: [\"${3:cli}\", \"${4:math}\"]",
+      "}"
+    ],
+    "description": "Propiedades de identidad de la entidad"
+  }
+}

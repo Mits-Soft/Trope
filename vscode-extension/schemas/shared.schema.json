@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "shared.schema.json",
+  "definitions": {
+    "kind": {
+      "type": "string",
+      "enum": ["method", "dataModel", "entity", "structure", "function", "alias"]
+    },
+    "reference": {
+      "type": ["string", "null"]
+    },
+    "base": {
+      "type": ["string", "null"]
+    },
+    "pattern": {
+      "type": ["string", "null"]
+    },
+    "target": {
+      "type": "string",
+      "enum": ["python", "typescript", "json"]
+    },
+    "securityLevel": {
+      "type": "string",
+      "enum": ["user", "admin", "system"]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "EntityDescriptor",
+  "patterns": [
+    {
+      "name": "keyword.control.entitydescriptor",
+      "match": "\\b(Entity|IdProps|PhysicProps|LogicProps|SecurityProps|Classes|DataModel|Methods|extends|mixins|imports|alias|doc)\\b"
+    },
+    {
+      "name": "storage.type.entitydescriptor",
+      "match": "\\b(int|float|string|bool|vector|matrix|list|set|Array|List|Optional)\\b"
+    },
+    {
+      "name": "constant.language.boolean.entitydescriptor",
+      "match": "\\b(true|false)\\b"
+    },
+    {
+      "name": "string.quoted.double.entitydescriptor",
+      "match": "\"(?:[^\"\\\\]|\\\\.)*\""
+    },
+    {
+      "name": "entity.name.type.entitydescriptor",
+      "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+    },
+    {
+      "name": "comment.block.entitydescriptor",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    {
+      "name": "entity.name.function.entitydescriptor",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*(?=\\()"
+    },
+    {
+      "name": "variable.parameter.entitydescriptor",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*:"
+    },
+    {
+      "name": "punctuation.separator.key-value.entitydescriptor",
+      "match": "\\:"
+    },
+    {
+      "name": "punctuation.terminator.statement.entitydescriptor",
+      "match": ";"
+    },
+    {
+      "name": "keyword.other.design-pattern.entitydescriptor",
+      "match": "\\b(Singleton|FactoryMethod|AbstractFactory|Builder|Prototype|Adapter|Bridge|Composite|Decorator|Facade|Flyweight|Proxy|ChainOfResponsibility|Command|Interpreter|Iterator|Mediator|Memento|Observer|State|Strategy|TemplateMethod|Visitor)\\b"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.entitydescriptor",
+          "match": "\\b(if|while|for|return)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.entitydescriptor",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.entitydescriptor",
+          "match": "\\\\."
+        }
+      ]
+    }
+  },
+  "scopeName": "source.entitydescriptor"
+}

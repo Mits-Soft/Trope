@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "EntityDescriptor",
+  "name": "trope",
   "patterns": [
     {
       "name": "keyword.control.entitydescriptor",
@@ -69,5 +69,5 @@
       ]
     }
   },
-  "scopeName": "source.entitydescriptor"
+  "scopeName": "source.trope"
 }

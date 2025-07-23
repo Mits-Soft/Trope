@@ -1,0 +1,125 @@
+CommandlineCalculator {
+  IdProps {
+    id: int = 1001;
+    name: string = "SimpleCalc";
+    type: string = "Application";
+    category: string (relatedConcept: "utility") = "Calculator";
+  }
+
+  LogicProps {
+    description: string = "A simple command-line calculator that performs basic arithmetic operations.";
+    supportedOperations: list<string> = ["addition", "subtraction", "multiplication", "division"];
+    inputFormat: string (relatedConcept: "user interface") = "expression (e.g., 2 + 3, 10 / 2)";
+    outputFormat: string (relatedConcept: "user interface") = "result (number)";
+    errorHandling: string (relatedConcept: "robustness") = "Handles division by zero and invalid input.";
+  }
+
+  PhysicProps {
+    fileSize: float (pattern: "KB", relatedConcept: "storage") = 1.5;
+    executable: bool = true;
+    dependencies: list<string> = ["Python 3.7+"];
+  }
+
+  SecurityProps {
+    inputValidation: bool = true; // Prevents malicious code injection.
+    permissionLevel: string (pattern: "role-based") = "User";
+  }
+}
+
+NoteTakingApp {
+    IdProps {
+    id: int = 2001;
+    name: string = "SimpleNotes";
+    type: string = "Application";
+    category: string (relatedConcept: "productivity") = "Note Taking";
+    }
+
+    LogicProps {
+    description: string = "A simple note-taking application with GUI using PySide6, supporting note creation, editing, saving, and loading from a JSON file.";
+    uiElements: list<string> = ["MainWindow", "NoteEditor", "NoteList"];
+    dataStorage: string (relatedConcept: "persistence") = "JSON file (notes.json)";
+    viewModel: string (relatedConcept: "architecture") = "MVVM (Model-View-ViewModel)";
+    errorHandling: string (relatedConcept: "robustness") = "Handles file I/O errors with informative messages.";
+    userActions: list<string> = ["Create Note", "Edit Note", "Save Note", "Load Notes", "Delete Note"];
+    }
+
+    PhysicProps {
+    fileSize: float (pattern: "KB", relatedConcept: "storage") = 3.5;
+    dependencies: list<string> = ["PySide6", "json"];
+    executable: bool = true;
+    }
+
+    SecurityProps {
+    inputValidation: bool = true; // Prevents malicious code injection.
+    permissionLevel: string (pattern: "role-based") = "User";
+    }
+
+    Classes {
+    MainWindow: string = "Main window of the application, handles overall layout, menu, and note list display.";
+    NoteEditor: string = "Handles note editing functionality (text input, saving) and interacts with ViewModel.";
+    NoteModel: string = "Data model for notes (title, content).  Persistent storage in JSON.";
+    ViewModel: string = "Connects NoteModel and NoteEditor, handles user actions, and triggers updates to the View.";
+    NoteListWidget: string = "QListWidget displaying a list of note titles.  Provides a means to select a note to be edited.";
+    }
+
+    DataModel {
+    Note: {
+        title: string;
+        content: string;
+    }
+}
+
+NoteTakingApp {
+    IdProps {
+        id: int = 2001;
+        name: string = "SimpleNotes";
+        type: string = "Application";
+        category: string (relatedConcept: "productivity") = "Note Taking";
+        version: string = "1.0.0";
+        author: string = "YourName";
+    }
+
+    LogicProps {
+        description: string = "A simple note-taking application with GUI using PySide6, supporting note creation, editing, saving, and loading from a JSON file.";
+        uiElements: list<string> = ["MainWindow", "NoteEditor", "NoteList", "StatusBar", "MenuBar", "Toolbar"];
+        dataStorage: string (relatedConcept: "persistence") = "JSON file (notes.json)";
+        viewModel: string (relatedConcept: "architecture") = "MVVM (Model-View-ViewModel)";
+        errorHandling: string (relatedConcept: "robustness") = "Handles file I/O errors with informative messages.";
+        userActions: list<string> = ["Create Note", "Edit Note", "Save Note", "Load Notes", "Delete Note", "Search Note"];
+        defaultFilePath: string = "./notes.json";
+        autosave: bool = true;
+    }
+
+    PhysicProps {
+        fileSize: float (pattern: "KB", relatedConcept: "storage") = 3.5;
+        dependencies: list<string> = ["PySide6", "json"];
+        executable: bool = true;
+        platform: string = "Cross-platform";
+    }
+
+    SecurityProps {
+        inputValidation: bool = true; // Prevents malicious code injection.
+        permissionLevel: string (pattern: "role-based") = "User";
+        encryption: bool = false; // Notes are stored in plaintext JSON.
+        backupEnabled: bool = true;
+    }
+
+    Classes {
+        MainWindow: string = "Main window of the application, manages layout, menu, toolbar, and note list display.";
+        NoteEditor: string = "Handles note editing functionality, supports rich text formatting and interacts with ViewModel.";
+        NoteModel: string = "Represents the data structure for notes, including title, content, and timestamps. Persistent storage in JSON.";
+        ViewModel: string = "Handles logic, connects NoteModel and NoteEditor, manages user interactions and updates the UI.";
+        NoteListWidget: string = "Displays a list of note titles, allows selection, deletion, and searching of notes.";
+        FileHandler: string = "Handles reading/writing notes from JSON file with error handling and autosave support.";
+    }
+
+    DataModel {
+        Note: {
+            id: int;
+            title: string;
+            content: string;
+            created_at: string (pattern: "ISO 8601");
+            modified_at: string (pattern: "ISO 8601");
+        }
+    }
+}

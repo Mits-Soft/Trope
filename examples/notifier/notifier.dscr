@@ -1,0 +1,96 @@
+UserManager {
+  doc: "Entidad encargada de gestionar usuarios y notificaciones";
+  alias: "GestorDeUsuarios";
+
+  imports: [NotificationService, UserRepository];
+
+  IdProps {
+    id: string = "UM001";
+    author: string = "Marcos";
+    category: string = "user-management";
+    tags: list<string> = ["auth", "notifications"];
+  }
+
+  LogicProps {
+    status: string(pattern: "active|inactive") = "active";
+    maxUsers: int = 100;
+  }
+
+  DataModel {
+    UserData: {
+      name: string;
+      email: string;
+      age: int;
+      preferences: list<string>;
+    }
+  }
+
+  Methods {
+    createUser(name: string, email: string, age: int): bool(pattern: "validation") /* Crea un usuario con datos básicos */;
+    notifyUser(userId: string, message: string): bool(designPattern: Observer) /* Envia una notificación al usuario */;
+  }
+}
+
+UserDomain {
+    doc: "Domain for user management and related services.";
+    
+    imports: [UserManager];
+
+    Classes {
+        UserManager: string = "Service";
+    }
+
+    DataModel {
+        UserManager {
+            NotificationService: ReferenceType (relatedConcept: "ExternalService");
+            UserRepository: ReferenceType (relatedConcept: "Persistence");
+        }
+    }
+
+    Methods {
+        sendNotification(User, Message): void (designPattern: "Observer");
+        saveUser(User): bool (securityLevel: "High");
+    }
+
+    IdProps {
+        domainId: string;
+    }
+
+    LogicProps {
+        isActive: bool = true;
+        maxRetries: int = 3;
+    }
+
+    SecurityProps {
+        authRequired: bool = true;
+        encryptionLevel: string = "AES-256";
+    }
+}
+
+TaskManager {
+  doc: "Entidad para manejar tareas personales";
+  
+  IdProps {
+    category: string = "productivity";
+    author: string = "Marcos";
+  }
+
+  LogicProps {
+    defaultPriority: int = 3;
+    allowBulk: bool = true;
+  }
+
+  DataModel {
+    TaskData: {
+      title: string;
+      priority: int;
+      status: string;
+    }
+  }
+
+  Methods {
+    createTask(title: string, priority: int): bool;
+    completeTask(taskId: string): bool;
+  }
+}
+

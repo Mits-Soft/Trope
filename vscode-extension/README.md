@@ -1,12 +1,17 @@
-# EntityDescriptor Syntax Highlighting  
 
-Esta extensión proporciona resaltado de sintaxis para archivos `.dscr`, usados para definir descriptores de entidades.  
+---
 
-## Características  
-- Resaltado de sintaxis para documentos EntityDescriptor.  
-- Soporte para palabras clave, tipos de datos y comentarios en lenguaje natural.  
+# EntityDescriptor Syntax Highlighting
 
-## Instalación  
-1. Descargar el archivo `.vsix`.  
-2. Instalar con `code --install-extension entitydescriptor-0.0.1.vsix`.  
-3. Abrir un archivo `.dscr` y verificar el resaltado de sintaxis.  
+This extension provides syntax highlighting for `.dscr` files, used to define entity descriptors.
+
+## Features
+
+* Syntax highlighting for EntityDescriptor documents.
+* Support for keywords, data types, and natural language comments.
+
+## Installation
+
+1. Download the `.vsix` file.
+2. Install it using `code --install-extension trope-dsl-0.0.2.vsix`.
+3. Open a `.dscr` file and verify the syntax highlighting.
